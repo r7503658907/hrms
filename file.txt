@@ -1,0 +1,817 @@
+Objective
+Today, we're delving into Inheritance. Check out the attached tutorial for learning materials and an instructional video.
+
+Task
+You are given two classes, Person and Student, where Person is the base class and Student is the derived class. Completed code for Person and a declaration for Student are provided for you in the editor. Observe that Student inherits all the properties of Person.
+
+Complete the Student class by writing the following:
+
+A Student class constructor, which has  parameters:
+A string, .
+A string, .
+An integer, .
+An integer array (or vector) of test scores, .
+A char calculate() method that calculates a Student object's average and returns the grade character representative of their calculated average:
+Grading.png
+
+Input Format
+
+The locked stub code in the editor reads the input and calls the Student class constructor with the necessary arguments. It also calls the calculate method which takes no arguments.
+
+The first line contains , , and , separated by a space. The second line contains the number of test scores. The third line of space-separated integers describes .
+
+Constraints
+
+
+
+
+
+
+
+Output Format
+
+Output is handled by the locked stub code. Your output will be correct if your Student class constructor and calculate() method are properly implemented.
+
+
+class Person:
+	def __init__(self, firstName, lastName, idNumber):
+		self.firstName = firstName
+		self.lastName = lastName
+		self.idNumber = idNumber
+	def printPerson(self):
+		print("Name:", self.lastName + ",", self.firstName)
+		print("ID:", self.idNumber)
+
+class Student(Person):
+   
+    def __init__(self,firstName, lastName, idNum , scores):
+
+        self.firstName = firstName
+        self.lastName = lastName
+        self.idNum = idNum
+        self.scores = scores
+        
+           
+    def printPerson(self):
+        print("Name: " + lastName + ", " + firstName)
+        print("ID:", idNum)
+        
+    def calculate(self):
+        x = len(scores)
+        n = 0
+        for i in range(x):
+            n+=scores[i]
+        
+        y = int(n)//int(x)
+
+        if 90<= y <= 100:
+            return 'O'
+        elif 80<= y < 90:
+            return 'E'
+        elif 70<= y < 80:
+            return 'A'
+        elif 55<= y < 70:
+            return 'P'
+        elif 40<= y < 55:
+            return 'D'
+        else:
+            return 'T'
+            
+
+line = input().split()
+firstName = line[0]
+lastName = line[1]
+idNum = line[2]
+numScores = int(input()) # not needed for Python
+scores = list( map(int, input().split()) )
+s = Student(firstName, lastName, idNum, scores)
+s.printPerson()
+print("Grade:", s.calculate())
+
+
+
+Read a given string, change the character at a given index and then print the modified string.
+Function Description
+
+Complete the mutate_string function in the editor below.
+
+mutate_string has the following parameters:
+
+string string: the string to change
+int position: the index to insert the character at
+string character: the character to insert
+
+def mutate_string(string, position, character):
+    lis= list(string)
+    lis[position]= character
+    return ''.join(lis)
+
+if __name__ == '__main__':
+    s = input()
+    i, c = input().split()
+    s_new = mutate_string(s, int(i), c)
+    print(s_new)
+
+
+3. abstract class (google search)
+1.Given a Book class and a Solution class, write a MyBook class that does the following:
+
+Inherits from Book
+Has a parameterized constructor taking these  parameters:
+string 
+string 
+int 
+Implements the Book class' abstract display() method so it prints these  lines:
+, a space, and then the current instance's .
+, a space, and then the current instance's .
+, a space, and then the current instance's .
+Note: Because these classes are being written in the same file, you must not use an access modifier (e.g.: ) when declaring MyBook or your code will not execute.
+
+
+ans = from abc import ABCMeta, abstractmethod
+class Book(object, metaclass=ABCMeta):
+    def __init__(self,title,author):
+        self.title=title
+        self.author=author   
+    @abstractmethod
+    def display(): pass
+class Book(object,  metaclass= ABCMeta):
+    def __init__(self,Title,Author):
+        self.Title = Title
+        self.Author = Author
+    @abstractmethod
+    def display():pass;
+class MyBook(Book):
+    def __init__(self, Title, Author,Price):
+        super().__init__(Title, Author)
+        self.Price = Price
+    def display(self):
+        print("Title: "+ self.Title+"\nAuthor: "+self.Author+"\nPrice: "+str(self.Price))
+        
+        
+        
+#Write MyBook class
+
+title=input()
+author=input()
+price=int(input())
+new_novel=MyBook(title,author,price)
+new_novel.display()
+
+
+
+
+string find 
+	Submissions	Leaderboard	Discussions	Editorial
+In this challenge, the user enters a string and a substring.
+ You have to print the number of times that the substring occurs in the given string.
+ String traversal will take place from left to right, not from right to left.
+
+NOTE: String letters are case-sensitive.
+
+Input Format
+
+The first line of input contains the original string. The next line contains the substring.
+
+def count_substring(string, sub_string):
+    count = 0
+    for i in range(len(string)-len(sub_string)+1):
+        if string[i:i+len(sub_string)] == sub_string:
+            count += 1
+    return count
+
+if __name__ == '__main__':
+    string = input().strip()
+    sub_string = input().strip()
+    
+    count = count_substring(string, sub_string)
+    print(count)
+
+2.string
+
+Python has built-in string validation methods for basic data. 
+It can check if a string is composed of alphabetical characters, alphanumeric characters, digits, etc.
+str.isalnum(),str.isalpha(),str.isdigit(),str.islower(),str.isupper()
+
+ans = def fun1(S):
+    for i in range(len(s)):
+        if (s[i].isalnum()):
+            return True
+            break;
+    return False
+    
+def fun2(S):
+    for i in range(len(s)):
+        if (s[i].isalpha()):
+            return True
+            break;
+    return False
+
+def fun3(S):
+    for i in range(len(s)):
+        if (s[i].isdigit()):
+            return True
+            break;
+    return False
+    
+def fun4(S):
+    for i in range(len(s)):
+        if (s[i].islower()):
+            return True
+            break;
+    return False
+def fun5(S):
+    for i in range(len(s)):
+        if (s[i].isupper()):
+            return True
+            break;
+    return False        
+if __name__ == '__main__':
+    s = input()
+     # String Validators in Python - HackerRank Solution START
+    flagalphanum = fun1(s)
+    alphabetical = fun2(s)
+    digits = fun3(s)
+    lowercase = fun4(s)
+    uppercase = fun5(s)
+    print(flagalphanum)
+    print(alphabetical)
+    print(digits)
+    print(lowercase)
+    print(uppercase)
+    # String Validators in Python - HackerRank Solution END
+
+3. fuction and class
+
+Complete the Difference class by writing the following:
+
+A class constructor that takes an array of integers as a parameter and saves it to the  instance variable.
+A computeDifference method that finds the maximum absolute difference between any  numbers in  and stores it in the  instance variable
+
+
+class Difference:
+    def __init__(self, a):
+        self.__elements = a
+    def computeDifference(self):
+        maximum = 0
+        
+        for i  in range(len(self.__elements)):
+            for j in range(len(self.__elements)):
+                absolute = abs(self.__elements[i] - self.__elements[j])
+                if absolute > maximum:
+                    maximum = absolute
+        self.maximumDifference  = maximum
+                
+	
+
+# End of Difference class
+
+_ = input()
+a = [int(e) for e in input().split(' ')]
+
+d = Difference(a)
+d.computeDifference()
+
+print(d.maximumDifference)
+
+4.thekness
+You are given a partial code that is used for generating the HackerRank Logo of variable thickness.
+Your task is to replace the blank (______) with rjust, ljust or center.
+
+
+
+#Replace all ______ with rjust, ljust or center. 
+
+thickness = int(input()) #This must be an odd number
+c = 'H'
+
+#Top Cone
+for i in range(thickness):
+    print((c*i).rjust(thickness-1)+c+(c*i).ljust(thickness-1))
+
+#Top Pillars
+for i in range(thickness+1):
+    print((c*thickness).center(thickness*2)+(c*thickness).center(thickness*6))
+
+#Middle Belt
+for i in range((thickness+1)//2):
+    print((c*thickness*5).center(thickness*6))    
+
+#Bottom Pillars
+for i in range(thickness+1):
+    print((c*thickness).center(thickness*2)+(c*thickness).center(thickness*6))    
+
+#Bottom Cone
+for i in range(thickness):
+    print(((c*(thickness-i-1)).rjust(thickness)+c+(c*(thickness-i-1)).ljust(thickness)).rjust(thickness*6))
+
+question no1
+Complete the insert function in your editor 
+so that it creates a new Node (pass data as the Node constructor argument) and inserts it at 
+the tail of the linked list referenced by the head parameter. Once the new node is added,
+ return the reference to the head node.
+
+Note: The head argument is null for an empty list.
+
+answer
+class Node:
+    def __init__(self,data):
+        self.data = data
+        self.next = None 
+class Solution: 
+    def display(self,head):
+        current = head
+        while current:
+            print(current.data,end=' ')
+            current = current.next
+    def insert(self, head, data):
+        if head is None:
+            head = Node(data)
+        else:
+            curr = head
+            while curr.next:
+                curr = curr.next
+            curr.next = Node(data)
+        return head
+mylist= Solution()
+T=int(input())
+head=None
+for i in range(T):
+    data=int(input())
+    head=mylist.insert(head,data)    
+mylist.display(head);  
+
+question 2
+Write a Calculator class with a single method: int power(int,int). 
+The power method takes two integers,  and , as parameters and returns the integer result of .
+ If either  or  is negative, then the method must throw an exception with the message: n and p should be non-negative.
+
+Note: Do not use an access modifier (e.g.: public) in the declaration for your Calculator class.
+
+answer
+class Calculator:
+    def power(self, n, p):
+        if n < 0 or p < 0:
+            raise Exception("n and p should be non-negative")
+        return pow(n, p)
+myCalculator=Calculator()
+T=int(input())
+for i in range(T):
+    n,p = map(int, input().split())
+    try:
+        ans=myCalculator.power(n,p)
+        print(ans)
+    except Exception as e:
+        print(e)
+
+question 3
+Write the following declarations and implementations:
+
+Two instance variables: one for your stack, and one for your queue.
+A void pushCharacter(char ch) method that pushes a character onto a stack.
+A void enqueueCharacter(char ch) method that enqueues a character in the queue instance variable.
+A char popCharacter() method that pops and returns the character at the top of the stack instance variable.
+A char dequeueCharacter() method that dequeues and returns the first character in the queue instance variable.
+Input Format
+You do not need to read anything from stdin. 
+The locked stub code in your editor reads a single line containing string s. 
+It then calls the methods specified above to pass each character to your instance variables.
+
+answer 
+import sys
+class Solution:
+    def __init__(self):
+        self.stack = []
+        self.queue = []
+    def popCharacter(self):
+        return self.stack.pop()
+    def pushCharacter(self, char):
+        self.stack.append(char)
+    def dequeueCharacter(self):
+        char = self.queue[0]
+        self.queue = self.queue[1:]
+        return char
+    def enqueueCharacter(self, char):
+        self.queue.append(char)
+# read the string s
+s=input()
+#Create the Solution class object
+obj=Solution()   
+l=len(s)
+# push/enqueue all the characters of string s to stack
+for i in range(l):
+    obj.pushCharacter(s[i])
+    obj.enqueueCharacter(s[i])
+    
+isPalindrome=True
+'''
+pop the top character from stack
+dequeue the first character from queue
+compare both the characters
+''' 
+for i in range(l // 2):
+    if obj.popCharacter()!=obj.dequeueCharacter():
+        isPalindrome=False
+        break
+#finally print whether string s is palindrome or not.
+if isPalindrome:
+    print("The word, "+s+", is a palindrome.")
+else:
+    print("The word, "+s+", is not a palindrome.")   
+
+question 4
+The AdvancedArithmetic interface and the method declaration for the abstract divisorSum(n) method are provided for you in the editor below.
+
+Complete the implementation of Calculator class, 
+which implements the AdvancedArithmetic interface. 
+The implementation for the divisorSum(n) method must return the sum of all divisors of n.
+
+answer
+
+class AdvancedArithmetic(object):
+    def divisorSum(n):
+        raise NotImplementedError
+
+class Calculator(AdvancedArithmetic):
+    def divisorSum(self, n):
+        val = 0
+        for i in range(1,n+1):
+            if(n % i == 0):
+                val += i
+        return val
+
+
+n = int(input())
+my_calculator = Calculator()
+s = my_calculator.divisorSum(n)
+print("I implemented: " + type(my_calculator).__bases__[0].__name__)
+print(s)
+
+question 5
+
+You are given a string S and width w.
+
+Your task is to wrap the string into a paragraph of width w.
+
+answer
+import textwrap
+
+def wrap(string, max_width):
+    for i in range(0,len(string)+1,max_width):
+        result = string[i:i+max_width]
+        if len(result) == max_width:
+            print(result)
+        else:
+            return(result)
+if __name__ == '__main__':
+    string, max_width = input(), int(input())
+    result = wrap(string, max_width)
+    print(result)
+
+question1
+Given an array, a, of size n distinct elements, sort the array in ascending order using the Bubble Sort algorithm above. Once sorted, print the following 3 lines:
+Array is sorted in numSwaps swaps.
+where numswaps is the number of swaps that took place.
+First Element: firstElement
+where first element is the first element in the sorted array.
+Last Element: lastElement
+where last element is the last element in the sorted array.
+Hint: To complete this challenge, you will need to add a variable that keeps a running tally of all swaps that occur during execution.
+
+import sys
+
+n = int(input().strip())
+a = list(map(int, input().strip().split(' ')))
+# Write Your Code Here
+numswaps = 0
+for i in range(n):
+    for j in range(n-1):
+        if a[j] > a[j+1]:
+            a[j], a[j+1] = a[j+1], a[j]
+            numswaps += 1
+    if numswaps == 0:
+        break
+
+print(f'Array is sorted in {numswaps} swaps.')
+print('First Element:', min(a))
+print('Last Element:', max(a))
+
+
+question 2
+Task
+Read a string, S, and print its integer value; if S cannot be converted to an integer, print Bad String.
+Note: You must use the String-to-Integer and exception handling constructs built into your submission language. If you attempt to use loops/conditional statements, you will get a 0 score.
+
+Input Format
+A single string, S.
+
+#!/bin/python3
+
+import sys
+
+
+S = input().strip()
+try :
+    print(int(S))
+except:
+    print('Bad String')
+
+question 3
+Write a single generic function named printArray; this function must take an array of generic elements as a parameter (the exception to this is C++, which takes a vector). The locked Solution class in your editor tests your function.
+
+Note: You must use generics to solve this challenge. Do not write overloaded functions.
+
+#include <iostream>
+#include <vector>
+#include <string>
+
+using namespace std;
+
+/**
+*    Name: printArray
+*    Print each element of the generic vector on a new line. Do not return anything.
+*    @param A generic vector
+**/
+
+// Write your code here
+
+template <class T>
+void printArray(vector<T> vec){
+
+   for(int i=0; i<vec.size(); i++)
+   cout<<vec[i]<<endl;
+
+}
+int main() {
+	int n;
+	
+	cin >> n;
+	vector<int> int_vector(n);
+	for (int i = 0; i < n; i++) {
+		int value;
+		cin >> value;
+		int_vector[i] = value;
+	}
+	
+	cin >> n;
+	vector<string> string_vector(n);
+	for (int i = 0; i < n; i++) {
+		string value;
+		cin >> value;
+		string_vector[i] = value;
+	}
+
+	printArray<int>(int_vector);
+	printArray<string>(string_vector);
+
+	return 0;
+}
+
+
+question 4
+
+The height of a binary search tree is the number of edges between the tree’s root and its furthest leaf. You are given a pointer, root, pointing to the root of a binary search tree. Complete the getHeight function provided in your editor so that it returns the height of the binary search tree.
+
+class Node:
+    def __init__(self,data):
+        self.right=self.left=None
+        self.data = data
+class Solution:
+    def insert(self,root,data):
+        if root==None:
+            return Node(data)
+        else:
+            if data<=root.data:
+                cur=self.insert(root.left,data)
+                root.left=cur
+            else:
+                cur=self.insert(root.right,data)
+                root.right=cur
+        return root
+    def getHeight(self, root):
+        return -1 if root is None else 1 + max(self.getHeight(root.left), self.getHeight(root.right))
+T=int(input())
+myTree=Solution()
+root=None
+for i in range(T):
+    data=int(input())
+    root=myTree.insert(root,data)
+height=myTree.getHeight(root)
+print(height)
+
+question 4
+Consider a database table, Emails, which has the attributes First Name and Email ID. Given  rows of data simulating the Emails table, print an alphabetically-ordered list of people whose email address ends in .
+
+
+import math
+import os
+import random
+import re
+import sys
+
+
+
+if __name__ == '__main__':
+    N = int(input().strip())
+    nw = []
+
+    for N_itr in range(N):
+        firstNameEmailID = input().split()
+
+        firstName = firstNameEmailID[0]
+
+        emailID = firstNameEmailID[1]
+        if '@gmail.com' in emailID:
+            nw.append(firstName)
+    
+    nw = sorted(nw)
+    for item in nw:
+        print(item)
+questions  5
+
+This problem is all about unit testing.
+Your company needs a function that meets the following requirements:
+For a given array of n integers, the function returns the index of the element with the minimum value in the array. If there is more than one element with the minimum value, the returned index should be the smallest one.
+If an empty array is passed to the function, it should raise an Exception.
+Note: The arrays are indexed from 0.
+
+A colleague has written that function, and your task is to design 3 separated unit tests, testing if the function behaves correctly. The implementation in Python is listed below (Implementations in other languages can be found in the code template):
+def minimum_index(seq):
+    if len(seq) == 0:
+        raise ValueError("Cannot get the minimum value index from an empty sequence")
+    min_idx = 0
+    for i in range(1, len(seq)):
+        if a[i] < a[min_idx]:
+            min_idx = i
+    return min_idx
+Another co-worker has prepared functions that will perform the testing and validate returned results with expectations. Your task is to implement 3 classes that will produce test data and the expected results for the testing functions. More specifically: function get_array() in TestDataEmptyArray class and functions get_array() and get_expected_result() in classes TestDataUniqueValues and TestDataExactlyTwoDifferentMinimums following the below specifications:
+get_array() method in class TestDataEmptyArray has to return an empty array.
+get_array() method in class TestDataUniqueValues has to return an array of size at least 2 with all unique elements, while method get_expected_result() of this class has to return the expected minimum value index for this array.
+get_array() method in class TestDataExactlyTwoDifferentMinimums has to return an array where there are exactly two different minimum values, while method get_expected_result() of this class has to return the expected minimum value index for this array.
+Take a look at the code template to see the exact implementation of functions that your colleagues already implemented.
+
+class TestDataEmptyArray(object):
+    
+    @staticmethod
+    def get_array():
+        # complete this function
+        return []
+
+class TestDataUniqueValues(object):
+    ls = []
+    for i in range(5):
+        ls.append(i)
+    ls[::-1] 
+    @staticmethod
+    def get_array():
+        # complete this function
+        return TestDataUniqueValues.ls
+    @staticmethod
+    def get_expected_result():
+        # complete this function
+        data = TestDataUniqueValues.get_array()
+        return data.index(min(data))
+class TestDataExactlyTwoDifferentMinimums(object):
+    ls = []
+    for i in range(5):
+        ls.append(i)
+    ls[::-1] 
+    ls.insert(0,0)
+    @staticmethod
+    def get_array():
+        # complete this function
+        return TestDataExactlyTwoDifferentMinimums.ls
+    @staticmethod
+    def get_expected_result():
+        data = TestDataExactlyTwoDifferentMinimums.get_array()
+        return data.index(min(data))
+question 6
+Your local library needs your help! Given the expected and actual return dates for a library book, create a program that calculates the fine (if any). The fee structure is as follows:
+
+If the book is returned on or before the expected return date, no fine will be charged (i.e.: fine = 0.
+If the book is returned after the expected return day but still within the same calendar month and year as the expected return date, fine = 15 Hackos x (the number of days late).
+If the book is returned after the expected return month but still within the same calendar year as the expected return date, the fine = 500 Hackos x (the number of months late).
+If the book is returned after the calendar year in which it was expected, there is a fixed fine of 10000 Hackos.
+Example
+d1, m1, y1 = 12312014  returned date
+d2, m2, y2 = 112015 due date
+
+The book is returned on time, so no fine is applied.
+
+d1, m1, y1 = 112015 returned date
+d2, m2, y2 = 12312014 due date
+
+
+The book is returned in the following year, so the fine is a fixed 10000.
+
+
+actual = input()
+actual = list(map(int, actual.split(" ")))
+
+expected = input()
+expected = list(map(int, expected.split(" ")))
+
+actualDate = actual[0]
+actualMonth = actual[1]
+actualYear = actual[2]
+
+expectedDate = expected[0]
+expectedMonth = expected[1]
+expectedYear = expected[2]
+
+fine = 0
+
+if actualYear > expectedYear:
+    fine = 10000
+elif actualYear == expectedYear: #Same calender year
+    if actualMonth > expectedMonth: #checking months
+        fine = 500 * (actualMonth - expectedMonth)
+    elif actualMonth == expectedMonth: #check dates now
+        if actualDate > expectedDate:
+            fine = 15 * (actualDate - expectedDate)
+print(fine)
+
+questions 7
+Today we will learn about running time, also known as time complexity.
+
+Task
+A prime is a natural number greater than 1 that has no positive divisors other than 1 and itself. Given a number, n, determine and print whether it is Prime or Not prime.
+
+Note: If possible, try to come up with a O(n1/2) primality algorithm, or see what sort of optimizations you come up with for an  algorithm. Be sure to check out the Editorial after submitting your code.
+
+Input Format
+The first line contains an integer, T, the number of test cases.
+Each of the T subsequent lines contains an integer, n, to be tested for primality.
+
+Constraints
+1 <= T <= 30
+1 <= n <= 2 x 109
+Output Format
+For each test case, print whether n is Prime or Not Prime on a new line.
+
+from math import sqrt
+from sys import stdin
+
+
+def checkPrime(n):
+    for i in range(2, int(sqrt(n))+1):
+        if n % i is 0:
+            return False
+    return True
+
+
+n = int(input())
+for line in stdin:
+    val = int(line)
+    if (val >= 2 and checkPrime(val)):
+        print("Prime")
+    else:
+        print("Not prime")
+
+question 8
+
+A Node class is provided for you in the editor. A Node object has an integer data field, data, and a Node instance pointer, next, pointing to another node (i.e.: the next node in a list).
+
+A removeDuplicates function is declared in your editor, which takes a pointer to the head node of a linked list as a parameter. Complete removeDuplicates so that it deletes any duplicate nodes from the list and returns the head of the updated list.
+
+Note: The head pointer may be null, indicating that the list is empty. Be sure to reset your next pointer when performing deletions to avoid breaking the list.
+
+class Node:
+    def __init__(self,data):
+        self.data = data
+        self.next = None 
+class Solution: 
+    def insert(self,head,data):
+            p = Node(data)           
+            if head==None:
+                head=p
+            elif head.next==None:
+                head.next=p
+            else:
+                start=head
+                while(start.next!=None):
+                    start=start.next
+                start.next=p
+            return head  
+    def display(self,head):
+        current = head
+        while current:
+            print(current.data,end=' ')
+            current = current.next
+    def removeDuplicates(self, head):
+        curr = head
+        while curr is not None and curr.next is not None:
+            while curr.next is not None and curr.data is curr.next.data:
+                curr.next = curr.next.next
+            curr = curr.next
+        return head
+mylist= Solution()
+T=int(input())
+head=None
+for i in range(T):
+    data=int(input())
+    head=mylist.insert(head,data)    
+head=mylist.removeDuplicates(head)
+mylist.display(head); 
+
+question 9
